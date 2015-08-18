@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     }//main method
 
     private void createListView() {
-        String[] StrTitle = new String[20];
+        final String[] StrTitle = new String[20];
         StrTitle[0] = "ห้ามเลี้ยวซ้าย";
         StrTitle[1] = "ห้ามเลี้ยวขวา";
         StrTitle[2] = "ตรงไป";
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         StrTitle[19] = "จำกัดความสูง";
 
 
-        int[] intImage = {R.drawable.traffic_01, R.drawable.traffic_02, R.drawable.traffic_03,
+        final int[] intImage = {R.drawable.traffic_01, R.drawable.traffic_02, R.drawable.traffic_03,
                 R.drawable.traffic_04, R.drawable.traffic_05, R.drawable.traffic_06,
                 R.drawable.traffic_07, R.drawable.traffic_08, R.drawable.traffic_09,
                 R.drawable.traffic_10, R.drawable.traffic_11, R.drawable.traffic_12,
@@ -71,6 +71,12 @@ public class MainActivity extends AppCompatActivity {
                 //intent to detail
 
                 Intent objIntent = new Intent(MainActivity.this, DetailActivity.class);
+
+                objIntent.putExtra("Title", StrTitle[i]);
+                objIntent.putExtra("Image", intImage[i]);
+                objIntent.putExtra("Detail", i);
+
+
                 startActivity(objIntent);
 
 

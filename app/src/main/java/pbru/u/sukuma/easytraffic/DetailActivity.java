@@ -4,13 +4,59 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class DetailActivity extends AppCompatActivity {
+    //Explicit
+    TextView titleTextView, detailTextView;
+    ImageView trafficImageView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        //Bind Widget
+        bindWidget();
+
+
+        //show title
+        showTitle();
+
+        //show image
+        showImage();
+
+        //showdetail
+        showDetail();
+
+
+
+    } //onCreate
+
+    private void showDetail() {
+
+        String[] strDetail = getResources().getStringArray(R.array.detail);
+        detailTextView.setText(strDetail[getIntent().getIntExtra("Detail", 0)]);
+    }
+
+    private void showImage() {
+        int intImage = getIntent().getIntExtra("Image", R.drawable.traffic_01);
+        trafficImageView.setImageResource(intImage);
+    }
+
+    private void showTitle() {
+        //receive from Intent
+        String strTitle = getIntent().getStringExtra("Title");
+        titleTextView.setText(strTitle);
+    }
+
+    private void bindWidget() {
+        titleTextView = (TextView)findViewById(R.id.txtTitleDetail);
+        detailTextView = (TextView)findViewById(R.id.txtDetail);
+        trafficImageView = (ImageView) findViewById(R.id.imvTrafficDetail);
+
     }
 
     @Override
