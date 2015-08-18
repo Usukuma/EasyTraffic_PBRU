@@ -21,8 +21,34 @@ public class MainActivity extends AppCompatActivity {
         //Initial Widget
         initialWidget();
 
+        createListView();
+
 
     }//main method
+
+    private void createListView() {
+        String[] strTitle = new String[20];
+        StrTitle[0] = "ห้ามเลี้ยวซ้าย;
+        StrTitle[1] = "ห้ามเลี้ยวขวา";
+        StrTitle[2] = "ตรงไป";
+        StrTitle[3] = "เลี้ยวซ้าย";
+        StrTitle[4] = "เลี้ยวขวา";
+        StrTitle[5] = "ออก";
+        StrTitle[6] = "เข้า";
+        StrTitle[7] = "ออก";
+        StrTitle[8] = "หยุด";
+        StrTitle[9] = "จำกัดความสูง";
+        StrTitle[10] = "ทางแยก";
+        StrTitle[11] = "ห้ามกลับรถ";
+        StrTitle[12] = "ห้ามจอด";
+        StrTitle[13] = "รถสวน";
+        StrTitle[14] = "ห้ามแซง";
+        StrTitle[15] = "เข้า";
+        StrTitle[16] = "หยุดตรวจ";
+        StrTitle[17] = "จำกัดความเร็ว";
+        StrTitle[18] = "จำกัดความกว้าง";
+        StrTitle[19] = "จำกัดความสูง";
+    }
 
     private void initialWidget() {
         trafficListView = (ListView) findViewById(R.id.listView);
