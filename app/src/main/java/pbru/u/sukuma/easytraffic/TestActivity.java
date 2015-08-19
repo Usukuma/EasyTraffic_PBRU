@@ -1,5 +1,8 @@
 package pbru.u.sukuma.easytraffic;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,7 +23,7 @@ public class TestActivity extends AppCompatActivity {
             choice2RadioButton, choice3RadioButton, choice4RadioButton;
     private String[] questionStrings;
     private int[] imageInts;
-    private int radioAnInt, indexAnInt;
+    private int radioAnInt, indexAnInt, scoreAnInt;
 
 
     @Override
@@ -59,10 +62,30 @@ public class TestActivity extends AppCompatActivity {
 
 
         } else {
+
+            //check score
+            checkScore();
+
             indexAnInt += 1;
+
 
             //change view
             changeView(indexAnInt);
+
+            //clear check
+            choiceRadioGroup.clearCheck();
+
+
+        }
+
+    }
+
+    private void checkScore() {
+
+        int[] intTrueAnswer = {1,2,3,4,1,2,3,4,1,2};
+        if (radioAnInt == intTrueAnswer [indexAnInt]) {
+            scoreAnInt++;
+
 
         }
 
@@ -70,15 +93,57 @@ public class TestActivity extends AppCompatActivity {
 
     private void changeView(int anInt) {
 
+
         //changeQuestion
 
         questionTextView.setText(questionStrings[anInt]);
-        
+        //changeImage
+        trafficImageView.setImageResource(imageInts[anInt]);
+
+        //change choice
+        int[] intTimes = {R.array.times1, R.array.times2,R.array.times3,
+                R.array.times4,R.array.times5, R.array.times6,R.array.times7,
+                R.array.times8,R.array.times9, R.array.times10, };
+        String[] strChoice = getResources().getStringArray(intTimes[anInt]);
+        choice1RadioButton.setText(strChoice[0]);
+        choice2RadioButton.setText(strChoice[1]);
+        choice3RadioButton.setText(strChoice[2]);
+        choice4RadioButton.setText(strChoice[3]);
+
+
+
+
     }//changeView
 
     private void ShowAnswerDialog() {
 
-    }
+        AlertDialog.Builder objBuilder = new AlertDialog.Builder(this);
+        objBuilder.setIcon(R.drawable.icon_myaccount);
+        objBuilder.setTitle("คะแนนสอบของคุณ");
+        objBuilder.setMessage("คะแนนที่คุณสอบได้" + Integer.toString(scoreAnInt) + "คะแนน");
+        objBuilder.setCancelable(false);
+        objBuilder.setNegativeButton("เล่นอีกครั้ง", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                onStart();
+                choiceRadioGroup.clearCheck();
+                dialogInterface.dismiss(); //ให้หายไปเฉยๆ
+
+            }
+        });
+        objBuilder.setPositiveButton("อ่านบทเรียนใหม่", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent objIntent = new Intent(TestActivity.this, MainActivity.class);
+                startActivity(objIntent);
+                dialogInterface.dismiss();
+            }
+        });
+
+        objBuilder.show();
+
+    }//showAnswerDialog
 
     private void radioController() {
 
