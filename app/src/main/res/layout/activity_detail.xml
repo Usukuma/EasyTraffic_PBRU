@@ -16,33 +16,32 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
+            android:text="@string/head"
             android:id="@+id/txtTitleDetail"
             android:textSize="@dimen/h1"
-            android:layout_gravity="center_horizontal"
-            android:textStyle="bold" />
+            android:textIsSelectable="true"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal" />
 
         <ImageView
             android:layout_width="@dimen/image"
             android:layout_height="@dimen/image"
             android:id="@+id/imvTrafficDetail"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="40dp" />
+            android:layout_gravity="center_horizontal" />
 
         <ScrollView
             android:layout_width="@dimen/image"
             android:layout_height="150dp"
             android:id="@+id/scrollView"
-            android:layout_gravity="center_horizontal"
-            android:padding="10dp">
+            android:layout_gravity="center_horizontal" >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/txtDetail"
-                android:textSize="20sp" />
+                android:id="@+id/txtDetail" />
         </ScrollView>
+
     </LinearLayout>
 
 </RelativeLayout>

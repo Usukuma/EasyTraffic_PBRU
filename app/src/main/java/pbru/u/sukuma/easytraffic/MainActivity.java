@@ -29,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
 
     }//main method
 
+    public void clickTest(View view) {
+        startActivity(new Intent(this, TestActivity.class));
+    }
+
     private void createListView() {
         final String[] StrTitle = new String[20];
         StrTitle[0] = "ห้ามเลี้ยวซ้าย";
