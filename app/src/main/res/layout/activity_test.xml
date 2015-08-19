@@ -67,12 +67,13 @@
                 android:text="New RadioButton"
                 android:id="@+id/radioButton4" />
         </RadioGroup>
-//test
+
     </LinearLayout>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="clickAnswer"
         android:text="Answer"
         android:id="@+id/button2"
         android:layout_alignParentBottom="true" />
